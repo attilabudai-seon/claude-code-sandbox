@@ -235,7 +235,11 @@ Go through each command. These are the daily workflow tools.
 
 **What to show:**
 
-1. **Install:** `npm install -g @anthropic-ai/claude-code` (or show it already installed)
+1. **Install** (pick one):
+   - **Native (recommended):** `curl -fsSL https://claude.ai/install.sh | bash` — auto-updates in background
+   - **Homebrew:** `brew install --cask claude-code` — manual updates via `brew upgrade claude-code`
+   - **npm:** `npm install -g @anthropic-ai/claude-code`
+   - Official docs: [code.claude.com/docs/en/quickstart](https://code.claude.com/docs/en/quickstart)
 2. **Run:** `cd` into a real project and run `claude`
 3. **Show the initial prompt** — point out how Claude picks up the project context
 4. **Show `!` prefix:** Type `!ls` or `!git status` — explain this is direct shell passthrough, no Claude interpretation
@@ -243,6 +247,33 @@ Go through each command. These are the daily workflow tools.
 6. **Show `/compact`** — if the session has some history, show the summarization. Otherwise, mention it and say you'll show it during the longer demo.
 
 **What to say:** "Notice that Claude immediately knows the project structure. It read the directory, found the language, found the framework. If there's a CLAUDE.md, it loaded it. All of this is context — and it's already consuming tokens."
+
+#### Claude Code + IntelliJ IDEA Setup
+
+**Prerequisites:** Claude Code CLI installed, Claude Pro/Max or API key, IntelliJ IDEA 2025.2+
+
+**Setup in 4 steps:**
+
+1. **Install plugin:** Settings → Plugins → Marketplace → "Claude Code" by Anthropic → Install → Restart
+2. **Enable MCP Server:** Settings → Tools → MCP Server → check "Enable MCP Server"
+3. **Configure plugin:** Settings → Tools → Claude Code [Beta] → set Claude command to `claude`
+4. **Fix ESC key (optional):** Settings → Tools → Terminal → uncheck "Move focus to the editor with Escape"
+
+**Two ways to launch:**
+
+| Method | How |
+|---|---|
+| From IDE terminal | Open IntelliJ's integrated terminal, type `claude` |
+| From external terminal | Run `claude`, then type `/ide` to connect to IntelliJ |
+
+**Key shortcuts:**
+
+| Shortcut | Action |
+|---|---|
+| `Cmd+Esc` / `Ctrl+Esc` | Quick launch Claude Code |
+| `Cmd+Option+K` / `Alt+Ctrl+K` | Insert file reference (`@File#L1-99`) |
+
+**What MCP integration gives you:** IDE diagnostics sharing, native diff viewer, run configurations, IntelliJ-powered search & refactoring, code formatting, and file operations — all accessible as tools from Claude Code.
 
 ---
 
